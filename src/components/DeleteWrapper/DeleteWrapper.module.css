@@ -1,0 +1,62 @@
+.wrapper {
+    margin-top: 23px;
+    padding: 13px 15px 26px 15px;
+    background: rgba(42, 44, 47, 1);
+    border-radius: 20px;
+}
+
+.userWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    background: rgba(66, 69, 73, 1);
+}
+
+.username {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.time {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.tag {
+    background: #3b3d41;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 7px;
+    height: 28px;
+    padding: 8px 12.5px;
+    font-size: 10px;
+}
+
+.tags {
+    margin-top: 30px;
+}
+
+.btn {
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.title {
+    font-weight: 600;
+    margin-top: 10px;
+    color: rgba(221, 221, 221, 1);
+}
+
+.descr {
+    margin-top: 15px;
+    color: #ddd;
+    opacity: 0.6;
+}
+
+.views {
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 26px;
+}

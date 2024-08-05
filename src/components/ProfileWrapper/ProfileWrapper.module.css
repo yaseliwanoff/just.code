@@ -1,0 +1,87 @@
+.fullname {
+    display: flex;
+    gap: 15px;
+}
+
+.firstname,
+.lastname {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.username {
+    margin-top: 4px;
+}
+
+.descr {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 10px;
+    width: 320px;
+}
+
+.img {
+    width: 230px;
+    height: 230px;
+    background: #3f4246;
+    border-radius: 600px;
+}
+
+.userWrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.userInfo {
+    margin-top: 60px;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+}
+
+.links a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.bottomSide {
+    margin-top: 80px;
+}
+
+.links .active {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background: #2f3134;
+    margin-top: 12px;
+}
+
+.categories {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.category {
+    padding: 15px 20px;
+}
+
+.articles {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activeTheme {
+    color: #949597;
+    background: #2a2c2f;
+}

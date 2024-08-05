@@ -1,0 +1,62 @@
+.articleWrapper {
+    padding: 15px;
+    border-radius: 20px;
+    background: #2a2c2f;
+}
+.articleWrapper:hover {
+    background: #242528;
+    cursor: pointer;
+}
+.articleWrapper:active {
+    opacity: 0.7;
+}
+.articleUserWrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.articleImg {
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    background: #424549;
+}
+.articleUsername {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    font-size: 12px;
+}
+.articleDate {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+.articleUserTags {
+    margin-top: 30px;
+    display: flex;
+    gap: 7px;
+}
+
+.articleTag {
+    background: #3b3d41 !important;
+    margin: 0;
+}
+
+.articleTitle {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.articleDescr {
+    margin-top: 15px;
+    width: 620px;
+    color: #ddd;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.articleViews {
+    margin-top: 25px;
+    font-size: 12px;
+    opacity: 0.4;
+}

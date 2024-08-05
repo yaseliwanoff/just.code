@@ -1,0 +1,11 @@
+.inputWithIcon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn {
+    padding-left: 52px;
+    text-align: left;
+}
