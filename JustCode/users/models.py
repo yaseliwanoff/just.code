@@ -58,7 +58,7 @@ class UserCustomModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(null=False, blank=False, verbose_name='Email for account', unique=True,
                               error_messages={'unique': 'A user with that username already exists.'})
     phone = models.PositiveIntegerField(null=True, blank=True, verbose_name='phone number')
-    date_birch = models.DateTimeField()  # Дописать
+    date_birch = models.DateTimeField(null=False, blank=False, verbose_name="User birch", editable=True)
     create_account = models.DateTimeField(auto_now_add=True, verbose_name='Time create account')
 
     is_active = models.BooleanField(default=True, verbose_name='Is Active?')
