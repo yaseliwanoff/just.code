@@ -1,0 +1,68 @@
+#root{
+    background:
+            radial-gradient(
+                    circle at 35% 10%,
+                    #28292e 15vh, transparent 30%),
+            radial-gradient(
+                    circle at 0 70%,
+                    rgb(40,41,39) 10vh, transparent 30%),
+            radial-gradient(
+                    circle at 110% 20% ,
+                    #2e3032 10vh, transparent 30%),
+            #1B1C1E;
+}
+main{
+
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter";
+    align-items: center;
+}
+.Layout-1{
+    width: 56vw;
+    border-radius: 10px;
+}
+.Layout-1>h1{
+    font-size: 5vw;
+}
+.Layout-1 p{
+    width: 23vw;
+}
+.Layout-1 .btn{
+    margin-top: 2vh;
+    position: absolute;
+    padding: 2vh 2vw ;
+    background: #2A2C2F;
+    border-radius: 10px;
+}
+h1{
+    color: #FFFFFF ;
+}
+p{
+    color: rgba(255, 255, 255, 0.6);
+}
+.layout-2{
+    margin-top: 8vh;
+    width: 56vw;
+    display: flex;
+    border-radius: 10px;
+}
+.layout-2 h1{
+    font-size: 2vw;
+}
+.layout-2 p{
+    width: 22vw;
+}
+.layout-2 div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+}
+.layout-2 .imgInfo{
+    background-image: url("src/assets/img.png");
+    border-radius: 20px;
+    width: 25vw;
+    height: 54vh;
+    background-size: 100%;
+}

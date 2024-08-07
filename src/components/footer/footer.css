@@ -1,0 +1,13 @@
+footer{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 4vw;
+}
+footer>p{
+    color: #A4A4A5;
+    height: 3vh;
+    text-align: end;
+    width: 49vw;
+}

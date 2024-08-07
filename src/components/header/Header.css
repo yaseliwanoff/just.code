@@ -1,0 +1,96 @@
+.Header{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 7.2vh;
+    position: relative;
+    align-items: center;
+    z-index: 2;
+}
+.menu{
+    width: 20vw;
+    height: 17px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    display: inline-flex;
+}
+.auth{
+     width: 29vw;
+     height: 57px;
+     left: 737px;
+     top: 0px;
+     justify-content: flex-end;
+     align-items: center;
+     gap: 20px;
+     display: inline-flex
+}
+.auth>.btn{
+    padding: 1vw 1vh;
+    font-family: "Inter";
+    font-weight: 400;
+    word-wrap: break-word;
+    border-radius: 10px;
+    z-index: 2;
+}
+.auth>.btn:hover{
+    color: rgba(255, 255, 255, 0.50);
+    background: #222325;
+
+}
+.auth>.btn:active{
+    color: #5F6061;
+    background: #222325;
+}
+
+
+.auth>.btn-2{
+    background: #222325;
+    color: #5F6061;
+}
+a.text{
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 14px; font-family: Inter;
+    font-weight: 400; word-wrap: break-word
+}
+a.text:active{
+    color: #DDDDDD
+}
+.user-icon{
+    background: #3F4246;
+    height: 20px;
+    width: 20px;
+    border-radius: 2.5px;
+}
+.user{
+    color: white;
+    display: flex;
+    width: 7.5vw;
+    padding: 2vh 5vw  2vh 1vw;
+    background:#2A2C2F;
+    border-radius: 10px;
+    z-index: 2;
+}
+.user-menu{
+    width: 13.5vw;
+    margin-top: 36vh;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    background: #2A2C2F;
+    border-radius: 10px;
+    transform: translateY(-140%);
+    transition-duration: 1.5s;
+    z-index: 0;
+}
+.user-menu.active{
+    height: auto;
+    transform: translateY(0%);
+    transition-duration: 1.5s;
+}
+.user-menu>.btn{
+    padding: 1.5vh 0vh 1.5vh 1vw;
+    margin: 5px;
+    border-radius: 10px;
+    background: #343639;
+}
