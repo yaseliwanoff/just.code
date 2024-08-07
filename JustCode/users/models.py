@@ -5,20 +5,27 @@ from django.contrib.auth.models import BaseUserManager, PermissionsMixin, Abstra
 
 
 class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, username, first_name, last_name, password, **more_fields):
+    def _create_user(self, email, username, first_name, last_name, date_birch, password=None, **more_fields):
         if not email:
-            raise ValueError('Error...\nYou have error becouse your account has not email')
-        elif not username or not first_name or not last_name:
-            raise ValueError('Error. Your account has not personal informations parameters')
-        else:
-            email = self.normalize_email(email)
-            account = self.model(email=email, username=username, first_name=first_name,
-                                 last_name=last_name, **more_fields)
-            account.set_password(password)
-            account.save(using=self._db)
-            return account
+            raise ValueError('Error: Your account must have an email.')
+        if not username or not first_name or not last_name:
+            raise ValueError('Error: Your account must have personal information parameters.')
+        
+        email = self.normalize_email(email)
+        account = self.model(
+            email=email,
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            date_birch=date_birch,
+            password=password,
+            **more_fields
+        )
+        account.set_password(password)
+        account.save(using=self._db)
+        return account
 
-    def create_user(self, email, username, first_name, last_name, password, **more_fields):
+    def create_user(self, email, username, first_name, last_name, date_birch, password=None, **more_fields):
         more_fields.setdefault('is_superuser', False)
         more_fields.setdefault('is_staff', False)
         more_fields.setdefault('is_active', True)
@@ -28,9 +35,9 @@ class CustomUserManager(BaseUserManager):
         elif more_fields.get('is_active', True) is not True:
             raise ValueError('Active user has no True')
         else:
-            return self._create_user(email, username, first_name, last_name, password, **more_fields)
+            return self._create_user(email, username, first_name, last_name, date_birch, password=password, **more_fields)
 
-    def create_superuser(self, email, username, first_name, last_name, password, **more_fields):
+    def create_superuser(self, email, username, first_name, last_name, date_birch, password=None, **more_fields):
         more_fields.setdefault('is_superuser', True)
         more_fields.setdefault('is_staff', True)
         more_fields.setdefault('is_active', True)
@@ -42,18 +49,18 @@ class CustomUserManager(BaseUserManager):
         elif more_fields.get('is_staff', True) is not True:
             raise ValueError('Error is staff no True')
         else:
-            return self._create_user(email, username, first_name, last_name, password, **more_fields)
+            return self._create_user(email, username, first_name, last_name, date_birch, password=password, **more_fields)
 
 
 class UserCustomModel(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    useranme = models.CharField(max_length=100, unique=True, blank=False, null=False, verbose_name='Username',
+    username = models.CharField(max_length=100, unique=True, blank=False, null=False, verbose_name='Username',
                                 default='username', error_messages={'unique': 'A user with that username already exists.'})
     user_slug = models.SlugField(max_length=100, blank=False, null=False, verbose_name='Slug',
                                  unique=True, error_messages={'unique': 'A user with that user slug already exists.'})
     account_photo = models.ImageField(upload_to='account_photos/', null=True, blank=True, verbose_name="User photo")
-    first_name = models.CharField(max_length=60, null=False, blank=False, verbose_name='User name')
-    last_name = models.CharField(max_length=60, null=False, blank=False, verbose_name='User name')
+    first_name = models.CharField(max_length=60, null=False, blank=False, verbose_name='First name')
+    last_name = models.CharField(max_length=60, null=False, blank=False, verbose_name='Last name')
     description_account = models.TextField(max_length=5000, null=False, blank=False, verbose_name='Profile description')
     email = models.EmailField(null=False, blank=False, verbose_name='Email for account', unique=True,
                               error_messages={'unique': 'A user with that username already exists.'})

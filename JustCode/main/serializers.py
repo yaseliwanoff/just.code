@@ -1,23 +1,24 @@
-# serializers.py
 from rest_framework import serializers
-from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from users.models import UserCustomModel
 
-# Сериализатор для модели пользователя
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('id', 'username', 'password', 'email')  # Поля, которые будут включены в сериализацию
-        extra_kwargs = {'password': {'write_only': True}}  # Указание, что поле пароля только для записи
+        model = UserCustomModel
+        fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name', 'date_birch')
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        # Создание нового пользователя с зашифрованным паролем
-        user = User.objects.create_user(
+        user = UserCustomModel.objects.create_user(
             username=validated_data['username'],
-            password=validated_data['password'],
-            email=validated_data.get('email', '')
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            date_birch=validated_data['date_birch'],
+            password=validated_data['password']
         )
         return user
+
 
 # Кастомный сериализатор для получения JWT токена
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
