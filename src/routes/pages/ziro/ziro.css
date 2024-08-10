@@ -65,4 +65,5 @@ p{
     width: 25vw;
     height: 54vh;
     background-size: 100%;
+    background-repeat: no-repeat;
 }
