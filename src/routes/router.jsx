@@ -6,7 +6,11 @@ import {MainPage} from "./pages/main/main.jsx";
 const r = createBrowserRouter([
     {
         path:"/",
-        element:<App/>,
+        element: (
+            <ErrorBoundary>
+                <App/>
+            </ErrorBoundary>
+        ),
         children: [
             {
                 path:"/",
