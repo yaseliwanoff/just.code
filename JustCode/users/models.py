@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, PermissionsMixin, AbstractBaseUser
 
+
 class CustomUserManager(BaseUserManager):
     def _create_user(self, email, username, first_name, last_name, date_birch, password=None, **more_fields):
         if not email:
@@ -48,6 +49,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Error is staff no True')
         else:
             return self._create_user(email, username, first_name, last_name, date_birch, password=password, **more_fields)
+
 
 class UserCustomModel(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
