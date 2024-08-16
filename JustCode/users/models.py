@@ -1,8 +1,6 @@
 import uuid
-
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, PermissionsMixin, AbstractBaseUser
-
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self, email, username, first_name, last_name, date_birch, password=None, **more_fields):
@@ -10,7 +8,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Error: Your account must have an email.')
         if not username or not first_name or not last_name:
             raise ValueError('Error: Your account must have personal information parameters.')
-        
+
         email = self.normalize_email(email)
         account = self.model(
             email=email,
@@ -51,7 +49,6 @@ class CustomUserManager(BaseUserManager):
         else:
             return self._create_user(email, username, first_name, last_name, date_birch, password=password, **more_fields)
 
-
 class UserCustomModel(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(max_length=100, unique=True, blank=False, null=False, verbose_name='Username',
@@ -65,7 +62,7 @@ class UserCustomModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(null=False, blank=False, verbose_name='Email for account', unique=True,
                               error_messages={'unique': 'A user with that username already exists.'})
     phone = models.PositiveIntegerField(null=True, blank=True, verbose_name='phone number')
-    date_birch = models.DateTimeField(null=False, blank=False, verbose_name="User birch", editable=True)
+    date_birch = models.DateField(null=False, blank=False, verbose_name="User birch", editable=True)
     create_account = models.DateTimeField(auto_now_add=True, verbose_name='Time create account')
 
     is_active = models.BooleanField(default=True, verbose_name='Is Active?')
@@ -76,10 +73,10 @@ class UserCustomModel(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'date_birch']
 
     def __str__(self):
-        return f"id: {self.id} username: {self.useranme} email: {self.email} | first name: {self.first_name} last name: {self.last_name}"
+        return f"id: {self.id} username: {self.username} email: {self.email} | first name: {self.first_name} last name: {self.last_name}"
 
     class Meta:
         verbose_name = 'User'
@@ -88,4 +85,3 @@ class UserCustomModel(AbstractBaseUser, PermissionsMixin):
         indexes = [
             models.Index(fields=['create_account'])
         ]
-
