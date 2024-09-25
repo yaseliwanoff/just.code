@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from main.models import Article
 from users.models import UserCustomModel
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,3 +30,11 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Добавление дополнительных претензий в токен
         token['username'] = user.username
         return token
+
+
+class JustSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Article
+        fields = ('__all__')

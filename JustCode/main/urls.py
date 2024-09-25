@@ -1,14 +1,13 @@
-# urls.py
 from django.urls import path
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
-from .views import RegisterView, CustomTokenObtainPairView
 
-# Маршруты для API
+from main.views import JustAPIList, JustAPIUpdate, JustAPIDestroy
+from users import views
+
+app_name = "main"
+
 urlpatterns = [
-    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),  # Эндпоинт для получения токена
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Эндпоинт для обновления токена
-    path('api/register/', RegisterView.as_view(), name='register'),  # Эндпоинт для регистрации
+    path('just/', JustAPIList.as_view()),
+    path('just/<int:pk>/', JustAPIUpdate.as_view()),
+    path('justdelete/<int:pk>/', JustAPIDestroy.as_view()),
 ]
+
